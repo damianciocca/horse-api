@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Orbital One</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/catalogAdmin.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/catalogAdmin.css">
+</head>
+
+<body>
+
+<div ng-app="SpaceHorseApp">
+
+    <div class="col-md-12 text-center" ng-controller="CatalogAdminController">
+
+        <h1>Orbital One</h1>
+
+        <h2>Configuración del Servidor</h2>
+
+        <br/>
+
+        <p>
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myNewModal">Servidor Bajo Mantenimiento</button>
+        </p>
+        <p>
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#availableModal">Servidor Habilitado</button>
+        </p>
+
+        <div class="container">
+            <!-- Modal -->
+            <div class="modal fade" id="myNewModal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Ingreso de Credenciales</h4>
+                        </div>
+                        <div class="modal-body table-responsive">
+                            <table class="table table-borderless center">
+                                <tr>
+                                    <th>Id de Usuario:</th>
+                                    <th><input type="text" ng-model="userId" placeholder="Id de Usuario" autofocus></th>
+                                </tr>
+                                <tr>
+                                    <th>Password:</th>
+                                    <th><input type="password" ng-model="password" placeholder="Password"></th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btnList1" type="button" class="btn btn-success" data-dismiss="modal" ng-click="funcUnderMaintenance()">Autorizar
+                            </button>
+                            <button id="btnClose1" type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Modal -->
+            <div class="modal fade" id="availableModal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Ingreso de Credenciales</h4>
+                        </div>
+                        <div class="modal-body table-responsive">
+                            <table class="table table-borderless center">
+                                <tr>
+                                    <th>Id de Usuario:</th>
+                                    <th><input type="text" ng-model="userId" placeholder="Id de Usuario" autofocus></th>
+                                </tr>
+                                <tr>
+                                    <th>Password:</th>
+                                    <th><input type="password" ng-model="password" placeholder="Password"></th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btnList2" type="button" class="btn btn-success" data-dismiss="modal"
+                                    ng-click="funcAvailable()">Autorizar
+                            </button>
+                            <button id="btnClose2" type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Catalogo</h2>
+
+        <br/>
+
+        <p>
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Listar Catalogos</button>
+        </p>
+
+        <form id="catalogForm">
+            <br/>
+            <div class="radio" data-ng-repeat="elem in radioData">
+                <input type="radio" name="catalog" ng-model="$parent.radioValue" ng-value="elem.id" />
+                {{elem.id | date:'yyyy-MM-dd HH:mm:ss'}}
+            </div>
+            <br/>
+            <p>
+                <button type="submit" ng-disabled="showList" class="btn btn-primary btn-lg" ng-click="funcSetActiveCatalog()">Activar Catalogo Seleccionado</button>
+            </p>
+        </form>
+
+        <br/>
+
+        <div class="container">
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Ingreso de Credenciales</h4>
+                        </div>
+                        <div class="modal-body table-responsive">
+                            <table class="table table-borderless center">
+                                <tr>
+                                    <th>Id de Usuario:</th>
+                                    <th><input type="text" ng-model="userId" placeholder="Id de Usuario" autofocus></th>
+                                </tr>
+                                <tr>
+                                    <th>Password:</th>
+                                    <th><input type="password" ng-model="password" placeholder="Password"></th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btnList" type="button" class="btn btn-success" data-dismiss="modal" ng-click="funcListCatalog()">Autorizar</button>
+                            <button id="btnClose" type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

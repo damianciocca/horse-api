@@ -1,0 +1,8 @@
+{
+  "newQuest": {
+    "id": "id",
+    "currentProgress": 300,
+    "state": "INITIAL",
+    "refreshTimeInSeconds": 0
+  }
+}

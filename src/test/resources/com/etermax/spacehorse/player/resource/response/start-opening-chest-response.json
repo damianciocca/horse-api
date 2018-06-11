@@ -1,0 +1,10 @@
+{
+  "chest": {
+    "id": 10,
+    "chestType": "chestType",
+    "mapNumber": 2,
+    "chestOpeningStartServerTime": 0,
+    "chestOpeningEndServerTime": 0,
+    "slotNumber": 3
+  }
+}

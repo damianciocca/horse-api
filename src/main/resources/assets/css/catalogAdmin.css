@@ -1,0 +1,15 @@
+.table-borderless > tbody > tr > td,
+.table-borderless > tbody > tr > th,
+.table-borderless > tfoot > tr > td,
+.table-borderless > tfoot > tr > th,
+.table-borderless > thead > tr > td,
+.table-borderless > thead > tr > th {
+    border: none;
+}
+
+.center {
+    border-radius: 5px;
+    width: 60%;
+    margin: 0px auto;
+    float: none;
+}

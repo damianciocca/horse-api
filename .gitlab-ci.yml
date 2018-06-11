@@ -1,0 +1,107 @@
+image: docker.etermax.net/docker-images/kernel-ci:latest
+
+variables:
+  DOCKER_DRIVER: overlay
+  GIT_STRATEGY: fetch
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/"
+
+stages:
+  - build
+  - test
+  - release
+  - deploy
+  - cleanup
+
+before_script:
+  - export CI_BUILD_SHA="${CI_BUILD_REF:0:8}"
+  - export VERSION="dev_4"
+  - export DEV_VERSION="dev_d_1"
+  - export PROD_VERSION="prod_1"
+  - source ci/docker-utils.sh
+  - source ci/deploy-utils.sh
+
+cache:
+  key: ${CI_PROJECT_ID}
+  paths:
+    - .m2/
+
+build:
+  stage: build
+  script:
+    - mvn package -U -DskipTests
+    - docker_build $CI_BUILD_SHA
+  except:
+    - tags
+
+
+test:
+  stage: test
+  script:
+    - docker run --name $CI_BUILD_SHA-dynamo-orbital -d dwmkerr/dynamodb
+    - export DYNAMODB_IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' $CI_BUILD_SHA-dynamo-orbital)
+    - export DYNAMODB_URL=http://$DYNAMODB_IP:8000
+    - mvn test -Prun-all-test
+  except:
+    - tags
+
+dev-release:
+  stage: release
+  script:
+    - docker_tag_push $CI_BUILD_SHA $DEV_VERSION
+  only:
+    - develop
+  except:
+    - tags
+
+stg-release:
+  stage: release
+  script:
+    - docker_tag_push $CI_BUILD_SHA $VERSION
+  only:
+    - master
+  except:
+    - tags
+
+prod-release:
+  stage: release
+  script:
+    - docker_tag_push $CI_BUILD_SHA $PROD_VERSION
+  only:
+    - master
+  except:
+    - tags
+
+dev-deploy:
+  stage: deploy
+  script:
+    - dev_deploy etermax api1.horserace.dev.etermax.net 8090 dev
+  only:
+   - develop
+  except:
+   - tags
+
+stg-deploy:
+  stage: deploy
+  script:
+    - deploy etermax api1.horserace.stg.etermax.net 8090 dev
+  only:
+   - master
+  except:
+    - tags
+
+prod-deploy:
+  stage: deploy
+  script:
+    - prod_deploy etermax api1.orbital1.com 8090 prod
+    - prod_deploy etermax api2.orbital1.com 8090 prod
+  only:
+   - master
+  when: manual
+  except:
+    - tags
+
+cleanup:
+  stage: cleanup
+  when: always
+  script:
+    - docker rm --force $CI_BUILD_SHA-dynamo-orbital || true

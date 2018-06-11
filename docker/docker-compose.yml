@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+  horse-api:
+    build: ../
+    image: docker.etermax.net/space-horse/horse-api:prueba
+    ports:
+      - 8090:8090
+    links:
+      - dynamodb
+    extra_hosts:
+      - "localhost:10.10.11.136"
+    networks:
+      - etermax
+  realtime:
+    build: ../
+    image: docker.etermax.net/space-horse/horse-realtime:prueba
+    ports:
+      - 8999:8999
+    links:
+      - horse-api
+    extra_hosts:
+      - "localhost:10.10.11.136"
+    networks:
+      - etermax
+  dynamodb:
+    image: fitz/dynamodb-local
+    expose:
+      - 8000
+    ports:
+      - 8000:8000
+    command: '-sharedDb -dbPath "/opt/dynamodb"'
+    volumes:
+      - "/opt/dynamodb:/opt/dynamodb"
+    networks:
+      - etermax
+
+networks:
+  etermax:
+    external:
+      name: etermax

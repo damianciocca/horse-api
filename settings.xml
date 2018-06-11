@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd"
+	xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<localRepository>/usr/share/maven/ref/repository</localRepository>
+	<mirrors>
+		<mirror>
+			<mirrorOf>*</mirrorOf>
+			<name>repo</name>
+			<url>http://artifactory.etermax.net:8081/artifactory/repo</url>
+			<id>repo</id>
+		</mirror>
+	</mirrors>
+	<servers>
+		<server>
+			<id>repo-etermax-releases</id>
+			<username>api</username>
+			<password>api1234</password>
+		</server>
+		<server>
+			<id>repo-etermax-snapshots</id>
+			<username>api</username>
+			<password>api1234</password>
+		</server>
+	</servers>
+	<profiles>
+		<profile>
+			<repositories>
+				<repository>
+					<snapshots>
+						<enabled>true</enabled>
+						<updatePolicy>never</updatePolicy>
+					</snapshots>
+					<id>unused-transactionId</id>
+					<url>unused-url</url>
+				</repository>
+			</repositories>
+			<id>neverUpdateSnapshots</id>
+		</profile>
+	</profiles>
+	<activeProfiles>
+		<activeProfile>neverUpdateSnapshots</activeProfile>
+	</activeProfiles>
+</settings>
+ 

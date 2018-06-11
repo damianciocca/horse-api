@@ -1,0 +1,42 @@
+version: '2'
+
+services:
+  horse-api:
+    build: ./
+    environment:
+      - ENV_CONFIG=.src/main/resources/dev-config.yml
+    expose:
+      - 8090
+    ports:
+      - 8090:8090
+    links:
+      - dynamodb
+    networks:
+      - etermax
+  realtime:
+    image: docker.etermax.net/space-horse/horse-realtime:1.0-SNAPSHOT
+    expose:
+      - 8999
+    ports:
+      - 8999:8999
+    links:
+      - horse-api
+    networks:
+      - etermax
+  dynamodb:
+    image: fitz/dynamodb-local
+    expose:
+      - 8000
+    ports:
+      - 8000:8000
+    command: '-sharedDb -dbPath "/opt/dynamodb"'
+    volumes:
+      - "/opt/dynamodb:/opt/dynamodb"
+    networks:
+      - etermax
+
+networks:
+  etermax:
+    external:
+      name: etermax
+

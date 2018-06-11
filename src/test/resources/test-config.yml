@@ -1,0 +1,82 @@
+# Logging settings.
+logging:
+  level: INFO
+  appenders:
+  - type: file
+    threshold: INFO
+    logFormat: '%-5level [%date{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] - %msg%n'
+    currentLogFilename: ./logs/application.log
+    archivedLogFilenamePattern: ./logs/application-%i.log.gz
+    archivedFileCount: 4
+    maxFileSize: 100MB
+    timeZone: GMT-3
+  - type: console
+    threshold: ALL
+    timeZone: GMT-3
+
+server:
+  type: simple
+  applicationContextPath: /
+  adminContextPath: /admin
+  connector:
+    type: http
+    port: 8091
+  requestLog:
+    appenders:
+    - type: console
+      threshold: ALL
+
+authentication:
+  enabled: true
+  maxCacheSize: 1000
+  defaultAdminLoginId: admin
+  defaultAdminPassword: 123456
+  defaultSupportLoginId: support
+  defaultSupportPassword: 654321
+
+repositoryType: dynamodb
+
+dynamoConfiguration:
+  tablecreation: yes
+  accesskey: accesskey
+  secretkey: secretkey
+  endpoint: http://localhost:8000
+
+environment: INTEGRATION_TEST
+
+realtimeServer:
+  #horserace.dev.etermax.net
+  host: localhost
+  port: 8999
+
+matchmakingServerUrl: http://localhost:8090
+
+assets:
+  overrides:
+    # Override requests to /dashboard/${1} to instead look in
+    # ${working directory}/src/main/resources/assets/${1}
+    /dashboard: src/main/resources/assets/
+
+expectedClientVersion: 16
+
+inAppsAndroid:
+  packageName: com.etermax.spacehorse2
+  signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqk6Kk3mSrBbULY+vkqXYWzLkdDc2Uyc50rkOw1LQEsWjNLctyzoYql9DOSTCtvRxmyamLnIjuzUh0IaEc9E8X31KXEXvrnuRTnUkS9WxM6u2V+zcISxZSKaSiGwJoAjpkxLDCOwJ+grT30Pmlw+Crjw59tldhuk2VKlz3eMTz2M0kC6seA1akevsTjgw3+6A9pJdQxTtcmbIQd+IGcZ39Y1x6KzVujE0Som8ifeyVnYWmEon0JM20aBRJ6DmQ9N02SJjwtAlMzARkB1TUlGaE6cocsqjAuYwkmCc6vQh/6Dy1g/XtY0Q4+qZ2Wh2o0pGUbCewKgqV+0UX5sVdAFf+wIDAQAB
+
+inAppsIos:
+  bundleId: com.etermax.orbital1
+
+abTesterConfiguration:
+  writeTimeoutInSeconds: 3
+  readTimeoutInSeconds: 3
+  connectTimeoutInSeconds: 3
+  requestTimeoutInSeconds: 2
+  baseUrl: "https://platform.etermax.com/ab-tester/"
+  gameCode: "O1_TEST"
+
+clubReporterConfiguration:
+  writeTimeoutInSeconds: 3
+  readTimeoutInSeconds: 3
+  connectTimeoutInSeconds: 3
+  environmentPrefix: "o1dev"
+  serverUrl: "https://test.clans.crack.me"

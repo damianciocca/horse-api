@@ -1,0 +1,13 @@
+target/
+bin/
+.idea
+.settings
+.project
+.classpath
+*.iml
+*.log
+*.log.gz
+dependency-reduced-pom.xml
+*.versionsBackup
+*~
+native-libs/

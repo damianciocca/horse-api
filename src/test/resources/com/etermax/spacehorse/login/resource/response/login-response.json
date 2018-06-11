@@ -1,0 +1,214 @@
+{
+  "loginId": "10",
+  "password": "password",
+  "sessionToken": "sessionToken",
+  "userRole": "PLAYER",
+  "catalogId": "catalogId",
+  "player": {
+    "userId": "1",
+    "name": "DEFAULT_PLAYER_NAME",
+    "gender": "UNKNOWN",
+    "age": 0,
+    "mapNumber": 0,
+    "maxMapNumber": 0,
+    "deck": {
+      "ownedCards": [
+        {
+          "id": 1,
+          "cardType": "card_enforcer",
+          "cardLevel": 0
+        },
+        {
+          "id": 2,
+          "cardType": "card_electric_duo",
+          "cardLevel": 0
+        },
+        {
+          "id": 3,
+          "cardType": "card_mastodon",
+          "cardLevel": 0
+        },
+        {
+          "id": 4,
+          "cardType": "card_punk_shooter",
+          "cardLevel": 0
+        },
+        {
+          "id": 5,
+          "cardType": "card_laser",
+          "cardLevel": 0
+        },
+        {
+          "id": 6,
+          "cardType": "card_flying_headstrongs",
+          "cardLevel": 0
+        },
+        {
+          "id": 7,
+          "cardType": "card_spitter",
+          "cardLevel": 0
+        },
+        {
+          "id": 8,
+          "cardType": "card_headstrongs",
+          "cardLevel": 0
+        }
+      ],
+      "stocks": [
+        {
+          "stockId": 0,
+          "selectedCardsIds": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "stockId": 1,
+          "selectedCardsIds": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "stockId": 2,
+          "selectedCardsIds": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        }
+      ],
+      "selectedStockId": 0
+    },
+    "inventory": {
+      "gold": {
+        "amount": 100
+      },
+      "gems": {
+        "amount": 100
+      },
+      "cardParts": {
+        "amounts": {}
+      },
+      "chests": {
+        "chests": []
+      }
+    },
+    "progress": {
+      "level": 0,
+      "xp": 0
+    },
+    "playerRewards": {
+      "rewardsReceivedToday": {
+        "goldRewardsReceivedToday": 0,
+        "expirationServerTime": 172799
+      }
+    },
+    "dynamicShop": {
+      "shopCards": {
+        "cards": [],
+        "expirationServerTime": 0
+      }
+    },
+    "freeChest": {
+      "lastChestOpeningServerTime": 72000
+    },
+    "mmr": 234,
+    "botMmr": 0,
+    "tutorialProgress": {
+      "activeTutorialId": null,
+      "finishedTutorials": []
+    },
+    "playerStats": {
+      "maxMMR": 0,
+      "nameChanges": 0,
+      "moneySpentInUsdCents": 0,
+      "matchStats": {
+        "multiplayerWonFullScore": 0,
+        "multiplayerPlayed": 0,
+        "multiplayerWon": 0,
+        "multiplayerLost": 0,
+        "opponentShipsDestroyed": 0
+      },
+      "daysSinceJoin": 0,
+      "cumulativeDays": 0
+    },
+    "abTag": "",
+    "questBoard": {
+      "slots": [
+        {
+          "slotId": "EASY",
+          "quest": {
+            "id": "",
+            "currentProgress": 0,
+            "state": "INITIAL",
+            "refreshTimeInSeconds": 0
+          }
+        },
+        {
+          "slotId": "MEDIUM",
+          "quest": {
+            "id": "",
+            "currentProgress": 0,
+            "state": "INITIAL",
+            "refreshTimeInSeconds": 0
+          }
+        },
+        {
+          "slotId": "HARD",
+          "quest": {
+            "id": "",
+            "currentProgress": 0,
+            "state": "INITIAL",
+            "refreshTimeInSeconds": 0
+          }
+        }
+      ],
+      "skipTimeInSeconds": 0,
+      "dailyQuest": {
+        "id": null,
+        "currentProgress": 0,
+        "state": null,
+        "refreshTimeInSeconds": 0
+      }
+    },
+    "specialOfferBoard": {
+      "specialOffers": [],
+      "refreshServerTimeInSeconds": 172800
+    },
+    "captainsCollection": {
+      "selectedCaptainId": "",
+      "ownedCaptains": []
+    },
+    "createdDateInSeconds": 0,
+    "achievementsCollection": {
+      "achievements": []
+    },
+    "playerLeague": null,
+    "leagueExpirationServerTime": 0
+  },
+  "serverTime": 1000,
+  "mmr": 234,
+  "matchmakingServerUrl": "matchMakerUrl",
+  "linkedWithSocialAccountId": "socialAccount10",
+  "scheduledNotificationEvents": {
+    "specialOfferNotificationEvents": []
+  }
+}

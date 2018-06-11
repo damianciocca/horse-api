@@ -1,0 +1,9 @@
+{
+  "Id":"ChestGlorious",
+  "ItemType":"CHEST",
+  "ItemId":"courier_Glorious",
+  "ItemName":"Glorious Courier",
+  "ItemQuantity":0,
+  "ItemGemPrice":400,
+  "InAppPurchase":false
+}

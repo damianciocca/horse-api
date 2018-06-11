@@ -1,0 +1,81 @@
+# Logging settings.
+logging:
+  level: INFO
+  appenders:
+  - type: file
+    threshold: INFO
+    logFormat: '%-5level [%date{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] - %msg%n'
+    currentLogFilename: ./logs/application.log
+    archivedLogFilenamePattern: ./logs/application-%i.log.gz
+    archivedFileCount: 4
+    maxFileSize: 100MB
+    timeZone: GMT-3
+  - type: console
+    threshold: ALL
+    timeZone: GMT-3
+
+server:
+  type: simple
+  applicationContextPath: /
+  adminContextPath: /admin
+  connector:
+    type: http
+    port: 8090
+  requestLog:
+    appenders:
+    - type: console
+      threshold: ALL
+
+authentication:
+  enabled: true
+  maxCacheSize: 1000
+  defaultAdminLoginId: admin
+  defaultAdminPassword: 123456
+  defaultSupportLoginId: support
+  defaultSupportPassword: 654321
+
+repositoryType: dynamodb
+
+dynamoConfiguration:
+  tablecreation: yes
+  accesskey: accesskey
+  secretkey: secretkey
+  endpoint: http://localhost:8000
+
+environment: DEVELOPMENT
+
+realtimeServer:
+  host: 52.44.200.247
+  port: 8999
+
+matchmakingServerUrl: http://52.44.200.247:8090
+
+assets:
+  overrides:
+    # Override requests to /dashboard/${1} to instead look in
+    # ${working directory}/src/main/resources/assets/${1}
+    /dashboard: src/main/resources/assets/
+
+expectedClientVersion: 33
+
+inAppsAndroid:
+  packageName: com.etermax.orbital1
+  signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlIGkJFNyfXWVrk+aNCT0KgKygJKIkyhRUTLRVKFrQ+tZICRZQqDfvXjzxJDZ39C4n4Ho9DoitIUJKa6ODEmfpGl8aG/CbiL8LOn4iqHKRhKMlJRoBx1x2nsKQ19kzycgKieFnKzoRcLjfifUPQST2q9al/dd2gTMqA4muhe1HFZ7l3JgDx8MQPfWCsHR+UoofQ+qCf+o18BWA9DxpHlt1WZ+ndc9QWpQEU1N5PKu09zbyadtx9clJjuddKqM3EEyl0+ZOqHbjTTXOww8+AYgRauuzijmYJ7duAyO8LEdzD1i8H5DAIhnJnU099RiSE5ZIWjtZ9zmagWLiVzGxpgxKQIDAQAB
+
+inAppsIos:
+  bundleId: com.etermax.orbital1
+
+abTesterConfiguration:
+  writeTimeoutInSeconds: 3
+  readTimeoutInSeconds: 3
+  connectTimeoutInSeconds: 3
+  requestTimeoutInSeconds: 2
+  baseUrl: "https://platform-staging.etermax.com/ab-tester/"
+  gameCode: "O1"
+
+clubReporterConfiguration:
+  writeTimeoutInSeconds: 3
+  readTimeoutInSeconds: 3
+  connectTimeoutInSeconds: 3
+  environmentPrefix: "o1dev"
+  serverUrl: "http://10.106.1.91:9015/"

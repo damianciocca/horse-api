@@ -1,0 +1,30 @@
+{
+  "rewardResponses": [
+    {
+      "rewardType": "CHEST",
+      "rewardId": null,
+      "amount": 1,
+      "chest": {
+        "id": 10,
+        "chestType": "chestType",
+        "mapNumber": 2,
+        "chestOpeningStartServerTime": 0,
+        "chestOpeningEndServerTime": 0,
+        "slotNumber": 3
+      },
+      "card": null
+    },
+    {
+      "rewardType": "TUTORIAL_CHEST",
+      "rewardId": "rewardId",
+      "amount": 10,
+      "chest": null,
+      "card": {
+        "id": 100,
+        "cardType": "cardType",
+        "cardLevel": 2
+      }
+    }
+  ],
+  "refreshTimeInSeconds": 100
+}
